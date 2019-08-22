@@ -16,7 +16,7 @@ class jucator():
 
 numbers = [2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15]
 type_cards = ['romb', 'trifoi', 'inima', 'pica']
-jucator1 = jucator("Mircea", 0)
+jucator1 = jucator("Player 2", 0)
 card_picked = card(random.choice(numbers), random.choice(type_cards))
 jucator1.cards.append(card_picked)
 while (jucator1.nr_cards < 25):
@@ -30,7 +30,7 @@ while (jucator1.nr_cards < 25):
         jucator1.cards.append(card_picked)
         jucator1.nr_cards += 1
 
-jucator2 = jucator("Alex", 0)
+jucator2 = jucator("Player 1", 0)
 card_is_in_hand = 1
 while card_is_in_hand == 1:
     card_picked = card(random.choice(numbers), random.choice(type_cards))
