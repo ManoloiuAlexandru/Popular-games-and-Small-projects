@@ -65,6 +65,8 @@ while (player1.nr_cards > 0 and player2.nr_cards > 0):
     card_on_filed1 = random.choice(player1.cards)
     card_on_filed2 = random.choice(player2.cards)
     player1.cards.remove(card_on_filed1)
+    player1.nr_cards -= 1
+    player2.nr_cards -= 1
     player2.cards.remove(card_on_filed2)
     player1.war_hand.append(card_on_filed1)
     player2.war_hand.append(card_on_filed2)
@@ -88,13 +90,36 @@ while (player1.nr_cards > 0 and player2.nr_cards > 0):
         player2.war_hand = []
         player1.war_hand = []
     else:
-        for i in range(0, card_on_filed2.number - 1):
-            card_on_filed1 = random.choice(player1.cards)
-            card_on_filed2 = random.choice(player2.cards)
-            player1.war_hand.append(card_on_filed1)
-            player1.cards.remove(card_on_filed1)
-            player2.war_hand.append(card_on_filed2)
-            player2.cards.remove(card_on_filed2)
+        if card_on_filed2.number > len(player1.cards):
+            for i in range(0, len(player1.cards) - 1):
+                card_on_filed1 = random.choice(player1.cards)
+                card_on_filed2 = random.choice(player2.cards)
+                player1.nr_cards -= 1
+                player2.nr_cards -= 1
+                player1.war_hand.append(card_on_filed1)
+                player1.cards.remove(card_on_filed1)
+                player2.war_hand.append(card_on_filed2)
+                player2.cards.remove(card_on_filed2)
+        elif card_on_filed2.number > len(player2.cards):
+            for i in range(0, len(player2.cards) - 1):
+                card_on_filed1 = random.choice(player1.cards)
+                card_on_filed2 = random.choice(player2.cards)
+                player1.nr_cards -= 1
+                player2.nr_cards -= 1
+                player1.war_hand.append(card_on_filed1)
+                player1.cards.remove(card_on_filed1)
+                player2.war_hand.append(card_on_filed2)
+                player2.cards.remove(card_on_filed2)
+        else:
+            for i in range(0, card_on_filed2.number - 1):
+                card_on_filed1 = random.choice(player1.cards)
+                card_on_filed2 = random.choice(player2.cards)
+                player1.nr_cards -= 1
+                player2.nr_cards -= 1
+                player1.war_hand.append(card_on_filed1)
+                player1.cards.remove(card_on_filed1)
+                player2.war_hand.append(card_on_filed2)
+                player2.cards.remove(card_on_filed2)
 
     for card_in_hand in player1.cards:
         print(card_in_hand.number, " ", card_in_hand.card_type, end=';')
