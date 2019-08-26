@@ -1,3 +1,5 @@
+For you to run these programs you need to have Python 3.7 installed on your PC. You don't need to have any extra packages installed or imported.
+
 # Popular-card-games
 In this repository you can find implementation of popular card games.
 
