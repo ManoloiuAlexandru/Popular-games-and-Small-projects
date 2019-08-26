@@ -61,74 +61,137 @@ while (player2.nr_cards < 25):
         player2.nr_cards += 1
 
 print("Cards have been split")
-while (player1.nr_cards > 0 and player2.nr_cards > 0):
-    card_on_filed1 = random.choice(player1.cards)
-    card_on_filed2 = random.choice(player2.cards)
-    player1.cards.remove(card_on_filed1)
-    player1.nr_cards -= 1
-    player2.nr_cards -= 1
-    player2.cards.remove(card_on_filed2)
-    player1.war_hand.append(card_on_filed1)
-    player2.war_hand.append(card_on_filed2)
+option = input("The game can start now. Do you want to simulate a game or play ?")
+if ("simulate" in option):
+    while (player1.nr_cards > 0 and player2.nr_cards > 0):
+        card_on_filed1 = random.choice(player1.cards)
+        card_on_filed2 = random.choice(player2.cards)
+        player1.cards.remove(card_on_filed1)
+        player2.cards.remove(card_on_filed2)
+        player1.war_hand.append(card_on_filed1)
+        player2.war_hand.append(card_on_filed2)
 
-    if card_on_filed1.number > card_on_filed2.number:
-        print(card_on_filed1.number, " is bigger", card_on_filed2.number)
-        print("Cards taken by player: ", player1.name)
-        player1.cards.extend(player2.war_hand)
-        player1.cards.extend(player1.war_hand)
-        player2.nr_cards = player2.nr_cards - len(player2.war_hand)
-        player1.nr_cards = player1.nr_cards + len(player1.war_hand)
-        player2.war_hand = []
-        player1.war_hand = []
-    elif (card_on_filed1.number < card_on_filed2.number):
-        print(card_on_filed2.number, "is bigger", card_on_filed1.number)
-        print("Cards taken by player: ", player2.name)
-        player2.cards.extend(player2.war_hand)
-        player1.cards.extend(player1.war_hand)
-        player2.nr_cards = player2.nr_cards + len(player2.war_hand)
-        player1.nr_cards = player1.nr_cards - len(player1.war_hand)
-        player2.war_hand = []
-        player1.war_hand = []
-    else:
-        if card_on_filed2.number > len(player1.cards):
-            for i in range(0, len(player1.cards) - 1):
-                card_on_filed1 = random.choice(player1.cards)
-                card_on_filed2 = random.choice(player2.cards)
-                player1.nr_cards -= 1
-                player2.nr_cards -= 1
-                player1.war_hand.append(card_on_filed1)
-                player1.cards.remove(card_on_filed1)
-                player2.war_hand.append(card_on_filed2)
-                player2.cards.remove(card_on_filed2)
-        elif card_on_filed2.number > len(player2.cards):
-            for i in range(0, len(player2.cards) - 1):
-                card_on_filed1 = random.choice(player1.cards)
-                card_on_filed2 = random.choice(player2.cards)
-                player1.nr_cards -= 1
-                player2.nr_cards -= 1
-                player1.war_hand.append(card_on_filed1)
-                player1.cards.remove(card_on_filed1)
-                player2.war_hand.append(card_on_filed2)
-                player2.cards.remove(card_on_filed2)
+        if card_on_filed1.number > card_on_filed2.number:
+            print(card_on_filed1.number, " is bigger", card_on_filed2.number)
+            print("Cards taken by player: ", player1.name)
+            player1.cards.extend(player2.war_hand)
+            player1.cards.extend(player1.war_hand)
+            player2.nr_cards = player2.nr_cards - len(player2.war_hand)
+            player1.nr_cards = player1.nr_cards + len(player1.war_hand)
+            player2.war_hand = []
+            player1.war_hand = []
+        elif (card_on_filed1.number < card_on_filed2.number):
+            print(card_on_filed2.number, "is bigger", card_on_filed1.number)
+            print("Cards taken by player: ", player2.name)
+            player2.cards.extend(player2.war_hand)
+            player1.cards.extend(player1.war_hand)
+            player2.nr_cards = player2.nr_cards + len(player2.war_hand)
+            player1.nr_cards = player1.nr_cards - len(player1.war_hand)
+            player2.war_hand = []
+            player1.war_hand = []
         else:
-            for i in range(0, card_on_filed2.number - 1):
-                card_on_filed1 = random.choice(player1.cards)
-                card_on_filed2 = random.choice(player2.cards)
-                player1.nr_cards -= 1
-                player2.nr_cards -= 1
-                player1.war_hand.append(card_on_filed1)
-                player1.cards.remove(card_on_filed1)
-                player2.war_hand.append(card_on_filed2)
-                player2.cards.remove(card_on_filed2)
+            print("War")
+            if card_on_filed2.number > len(player1.cards):
+                for i in range(0, len(player1.cards) - 1):
+                    card_on_filed1 = random.choice(player1.cards)
+                    card_on_filed2 = random.choice(player2.cards)
+                    player1.war_hand.append(card_on_filed1)
+                    player1.cards.remove(card_on_filed1)
+                    player2.war_hand.append(card_on_filed2)
+                    player2.cards.remove(card_on_filed2)
+            elif card_on_filed2.number > len(player2.cards):
+                for i in range(0, len(player2.cards) - 1):
+                    card_on_filed1 = random.choice(player1.cards)
+                    card_on_filed2 = random.choice(player2.cards)
+                    player1.war_hand.append(card_on_filed1)
+                    player1.cards.remove(card_on_filed1)
+                    player2.war_hand.append(card_on_filed2)
+                    player2.cards.remove(card_on_filed2)
+            else:
+                for i in range(0, card_on_filed2.number - 1):
+                    card_on_filed1 = random.choice(player1.cards)
+                    card_on_filed2 = random.choice(player2.cards)
+                    player1.war_hand.append(card_on_filed1)
+                    player1.cards.remove(card_on_filed1)
+                    player2.war_hand.append(card_on_filed2)
+                    player2.cards.remove(card_on_filed2)
 
-    for card_in_hand in player1.cards:
-        print(card_in_hand.number, " ", card_in_hand.card_type, end=';')
+        for card_in_hand in player1.cards:
+            print(card_in_hand.number, " ", card_in_hand.card_type, end=';')
+        print()
+        print(player1.nr_cards)
+        for card_in_hand in player2.cards:
+            print(card_in_hand.number, " ", card_in_hand.card_type, end=';')
+        print()
+        print(player2.nr_cards)
     print()
-    for card_in_hand in player2.cards:
-        print(card_in_hand.number, " ", card_in_hand.card_type, end=';')
+    if player2.nr_cards < 0:
+        print(player1.name, " won")
+    else:
+        print(player2.name, " won")
+
+elif "play" in option:
+    player1.name = input("What is your name?")
+    print("Hello ", player1.name)
+    move = input("Press any key to start")
     print()
-print()
-if player2.nr_cards < 0:
-    print(player1.name, " won")
-else:
-    print(player2.name, " won")
+    while (player1.nr_cards > 0 and player2.nr_cards > 0):
+        card_on_filed1 = random.choice(player1.cards)
+        card_on_filed2 = random.choice(player2.cards)
+        player1.cards.remove(card_on_filed1)
+        player2.cards.remove(card_on_filed2)
+        player1.war_hand.append(card_on_filed1)
+        player2.war_hand.append(card_on_filed2)
+
+        if card_on_filed1.number > card_on_filed2.number:
+            print(card_on_filed1.number, " is bigger", card_on_filed2.number)
+            print("Cards taken by player: ", player1.name)
+            player1.cards.extend(player2.war_hand)
+            player1.cards.extend(player1.war_hand)
+            player2.nr_cards = player2.nr_cards - len(player2.war_hand)
+            player1.nr_cards = player1.nr_cards + len(player1.war_hand)
+            player2.war_hand = []
+            player1.war_hand = []
+        elif (card_on_filed1.number < card_on_filed2.number):
+            print(card_on_filed2.number, "is bigger", card_on_filed1.number)
+            print("Cards taken by player: ", player2.name)
+            player2.cards.extend(player2.war_hand)
+            player1.cards.extend(player1.war_hand)
+            player2.nr_cards = player2.nr_cards + len(player2.war_hand)
+            player1.nr_cards = player1.nr_cards - len(player1.war_hand)
+            player2.war_hand = []
+            player1.war_hand = []
+        else:
+            print("War")
+            if card_on_filed2.number > len(player1.cards):
+                for i in range(0, len(player1.cards) - 1):
+                    card_on_filed1 = random.choice(player1.cards)
+                    card_on_filed2 = random.choice(player2.cards)
+                    player1.war_hand.append(card_on_filed1)
+                    player1.cards.remove(card_on_filed1)
+                    player2.war_hand.append(card_on_filed2)
+                    player2.cards.remove(card_on_filed2)
+            elif card_on_filed2.number > len(player2.cards):
+                for i in range(0, len(player2.cards) - 1):
+                    card_on_filed1 = random.choice(player1.cards)
+                    card_on_filed2 = random.choice(player2.cards)
+                    player1.war_hand.append(card_on_filed1)
+                    player1.cards.remove(card_on_filed1)
+                    player2.war_hand.append(card_on_filed2)
+                    player2.cards.remove(card_on_filed2)
+            else:
+                for i in range(0, card_on_filed2.number - 1):
+                    card_on_filed1 = random.choice(player1.cards)
+                    card_on_filed2 = random.choice(player2.cards)
+                    player1.war_hand.append(card_on_filed1)
+                    player1.cards.remove(card_on_filed1)
+                    player2.war_hand.append(card_on_filed2)
+                    player2.cards.remove(card_on_filed2)
+
+        move = input("Press any key to continue")
+        print()
+    print()
+    if player2.nr_cards < 0:
+        print(player1.name, " won")
+    else:
+        print(player2.name, " won")
