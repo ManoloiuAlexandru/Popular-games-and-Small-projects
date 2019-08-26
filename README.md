@@ -6,4 +6,4 @@ In this repository you can find implementation of popular card games.
   The implementation is in Python. It is using basic Object Oriented concepts. The class card is used to define an object that have the 2 attributes of a normal card: number and card_type and the class player has 4 attributes: name- name of the player, nr_card- gives the number of the card, cards- gives the card that the player has in his hands and war_hand- is a list that is used when war is happening.
 The player can select if he wants to play or simulate a game. While he is playing informations of who and with what card the hand was won. 
 
-Note: Because the game is dividing the deck randomly sometimes it will enter in infinit cicle and at that point you need to stop and run it again.
+Note: Because the game is dividing the deck randomly sometimes it will enter in infinit cicle and at that point you need to stop it and run it again.
