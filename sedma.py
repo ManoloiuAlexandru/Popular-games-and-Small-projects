@@ -19,7 +19,6 @@ class player:
         self.nr_cards = nr_cards
         self.cards = []
         self.points = 0
-        self.new_hand = []
 
 
 numbers = [7, 8, 9, 10, 12, 13, 14, 15]
