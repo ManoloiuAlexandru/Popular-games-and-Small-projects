@@ -1,4 +1,3 @@
-
 import random
 
 
@@ -81,19 +80,24 @@ print()
 player2.nr_cards = 4
 card_down2 = None
 card_down1 = None
-
-while deck_size > 0:
+in_progress = 0
+while deck_size > -8:
     max_nr_of_card = 0
-    card_to_play = card(None, None)
-    for card_in_hand in player1.cards:
-        nr_of_card = player1.cards.count(card_in_hand)
-        if nr_of_card == 4 and card_in_hand.number == 7:
-            print("Player 1 won because he has only 7's in his hand")
-            deck_size = 0
-        elif max_nr_of_card < nr_of_card and card_in_hand.number != 7:
-            max_nr_of_card = nr_of_card
-            card_to_play.number = card_in_hand.number
-            card_to_play.card_type = card_in_hand.card_type
+    if (in_progress == 0):
+        card_to_play = card(None, None)
+        for card_in_hand in player1.cards:
+            nr_of_card = player1.cards.count(card_in_hand)
+            if nr_of_card == 4 and card_in_hand.number == 7:
+                print("Player 1 won because he has only 7's in his hand")
+                deck_size = 0
+            elif card_in_hand.number == 7 and nr_of_card == 3:
+                max_nr_of_card = nr_of_card
+                card_to_play = card_in_hand
+            elif max_nr_of_card < nr_of_card and card_in_hand.number != 7 and player1.nr_cards > 1:
+                max_nr_of_card = nr_of_card
+                card_to_play = card_in_hand
+    else:
+        card_to_play = card_down1
     print("You shoud play this card", card_to_play.card_type, card_to_play.number)
     card_down1 = card_to_play
     player1.nr_cards -= 1
@@ -102,16 +106,21 @@ while deck_size > 0:
     print()
 
     max_nr_of_card = 0
-    card_to_play = card(None, None)
-    for card_in_hand in player2.cards:
-        nr_of_card = player2.cards.count(card_in_hand)
-        if nr_of_card == 4 and card_in_hand.number == 7:
-            print("Player 2 won because he has only 7's in his hand")
-            deck_size = 0
-        elif max_nr_of_card < nr_of_card and card_in_hand.number != 7:
-            max_nr_of_card = nr_of_card
-            card_to_play.number = card_in_hand.number
-            card_to_play.card_type = card_in_hand.card_type
+    if (in_progress == 0):
+        card_to_play = card(None, None)
+        for card_in_hand in player2.cards:
+            nr_of_card = player2.cards.count(card_in_hand)
+            if nr_of_card == 4 and card_in_hand.number == 7:
+                print("Player 2 won because he has only 7's in his hand")
+                deck_size = 0
+            elif card_in_hand.number == 7 and nr_of_card == 3:
+                max_nr_of_card = nr_of_card
+                card_to_play = card_in_hand
+            elif max_nr_of_card < nr_of_card and card_in_hand.number != 7 and player2.nr_cards > 1:
+                max_nr_of_card = nr_of_card
+                card_to_play = card_in_hand
+    else:
+        card_to_play = card_down2
     print("You shoud play this card", card_to_play.card_type, card_to_play.number)
     card_down2 = card_to_play
     player2.nr_cards -= 1
@@ -120,6 +129,7 @@ while deck_size > 0:
     print()
 
     if card_down1.number != card_down2.number and card_down2.number != 7:
+        in_progress = 0
         print("Player 1 gets the cards")
         if card_down1.number == 10 or card_down1.number == 15:
             player1.points += 1
@@ -128,9 +138,10 @@ while deck_size > 0:
         print()
         for card_in_hand in player2.cards:
             print(card_in_hand.number, " ", card_in_hand.card_type, end=';')
+        print("There are ", deck_size, " cards left")
         print()
 
-        while (player1.nr_cards < 4):
+        while player1.nr_cards < 4 and deck_size > 0:
             card_picked = card(random.choice(numbers), random.choice(type_cards))
             card_is_in_hand = 0
             for card_in_hand in player1.cards:
@@ -150,7 +161,7 @@ while deck_size > 0:
                 player1.cards.append(card_picked)
                 player1.nr_cards += 1
                 deck_size -= 1
-        while (player2.nr_cards < 4):
+        while player2.nr_cards < 4 and deck_size > 0:
             card_picked = card(random.choice(numbers), random.choice(type_cards))
             card_is_in_hand = 0
             for card_in_hand in player1.cards:
@@ -177,43 +188,43 @@ while deck_size > 0:
         print()
 
     elif card_down1.number == card_down2.number:
+        in_progress = 1
         can_continue = 0
         for card_in_hand in player1.cards:
             if card_down1.number == card_in_hand.number:
-                card_down1.number = card_in_hand.number
-                card_down1.card_type = card_down1.card_type
+                card_down1 = card_in_hand
                 player1.nr_cards -= 1
                 player1.cards.remove(card_down1)
                 out_cards.append(card_down1)
-                can_continue=1
+                can_continue = 1
                 break
-        if can_continue==0:
-                for card_in_hand in player1.cards:
-                    if card_in_hand.number != 10 or card_in_hand.number != 15 or card_in_hand.number != 7:
-                        card_down1.number = card_in_hand.number
-                        card_down1.card_type = card_down1.card_type
-                        player1.nr_cards -= 1
-                        player1.cards.remove(card_down1)
-                        out_cards.append(card_down1)
-        can_continue=0
+        if can_continue == 0:
+            for card_in_hand in player1.cards:
+                if card_in_hand.number != 10 or card_in_hand.number != 15 or card_in_hand.number != 7:
+                    card_down1 = card_in_hand
+                    player1.nr_cards -= 1
+                    player1.cards.remove(card_down1)
+                    out_cards.append(card_down1)
+                    break
+        can_continue = 0
         for card_in_hand in player2.cards:
             if card_down2.number == card_in_hand.number:
-                card_down2.number = card_in_hand.number
-                card_down2.card_type = card_down2.card_type
+                card_down2 = card_in_hand
                 player2.nr_cards -= 1
                 player2.cards.remove(card_down2)
                 out_cards.append(card_down2)
-                can_continue=1
+                can_continue = 1
                 break
-            if can_continue == 0:
-                for card_in_hand in player2.cards:
-                    if card_in_hand.number != 10 or card_in_hand.number != 15 or card_in_hand.number != 7:
-                        card_down2.number = card_in_hand.number
-                        card_down2.card_type = card_down2.card_type
-                        player2.nr_cards -= 1
-                        player2.cards.remove(card_down2)
-                        out_cards.append(card_down2)
+        if can_continue == 0:
+            for card_in_hand in player2.cards:
+                if card_in_hand.number != 10 or card_in_hand.number != 15 or card_in_hand.number != 7:
+                    card_down2 = card_in_hand
+                    player2.nr_cards -= 1
+                    player2.cards.remove(card_down2)
+                    out_cards.append(card_down2)
+                    break
     else:
+        in_progress = 0
         print("Player 2 gets the cards")
         if card_down1.number == 10 or card_down1.number == 15:
             player2.points += 1
@@ -222,9 +233,10 @@ while deck_size > 0:
         print()
         for card_in_hand in player2.cards:
             print(card_in_hand.number, " ", card_in_hand.card_type, end=';')
+        print("There are ", deck_size, " cards left")
         print()
 
-        while (player1.nr_cards < 4):
+        while player1.nr_cards < 4 and deck_size > 0:
             card_picked = card(random.choice(numbers), random.choice(type_cards))
             card_is_in_hand = 0
             for card_in_hand in player1.cards:
@@ -238,7 +250,7 @@ while deck_size > 0:
             if card_is_in_hand == 0:
                 player1.cards.append(card_picked)
                 player1.nr_cards += 1
-        while (player2.nr_cards < 4):
+        while player2.nr_cards < 4 and deck_size > 0:
             card_picked = card(random.choice(numbers), random.choice(type_cards))
             card_is_in_hand = 0
             for card_in_hand in player1.cards:
@@ -261,6 +273,7 @@ while deck_size > 0:
         print()
         for card_in_hand in player2.cards:
             print(card_in_hand.number, " ", card_in_hand.card_type, end=';')
+        print("There are ", deck_size, " cards left")
         print()
 
 if player2.points > player1.points:
