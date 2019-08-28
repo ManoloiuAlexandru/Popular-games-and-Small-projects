@@ -294,13 +294,6 @@ while deck_size > 0 and player1.nr_cards > 0 and player2.nr_cards > 0:
         print("There are ", deck_size, " cards left")
         print()
 
-for card_in_hand in player1.cards:
-    print(card_in_hand.number, " ", card_in_hand.card_type, end=';')
-    print()
-for card_in_hand in player2.cards:
-    print(card_in_hand.number, " ", card_in_hand.card_type, end=';')
-    print("There are ", deck_size, " cards left")
-    print()
 if player2.points > player1.points:
     print("Player 2 wins")
 elif player1.points > player2.points:
