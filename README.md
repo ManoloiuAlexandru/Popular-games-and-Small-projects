@@ -16,6 +16,5 @@ Note: Because the game is dividing the deck randomly sometimes it will enter in 
   
   Sedma is a Czech 4-card trick-and-draw game played by four players in fixed partnerships with a 32-card Bohemian-pattern pack. Card suits do not play a role in this game, and there is no ranking order. A trick is won by the last player to play a card of the same rank as the card led.
   
-  The implementation is in Python. It is using the same OOP principles as the cards-war game. The class card is used to define an object that have the 2 attributes of a normal card: number and card_type and the class player has 4 attributes: name- name of the player, nr_card- gives the number of the card, cards- gives the card that the player has in his hands and points- that increase with one everytime you get an A(15) or a 10. While the game is going messages about what card you should play and who won the current hand and how many cards ar left in the deck.
-  
-  This game is still in progress.
+  The implementation is in Python. It is using the same OOP principles as the cards-war game. The class card is used to define an object that have the 2 attributes of a normal card: number and card_type and the class player has 4 attributes: name- name of the player, nr_card- gives the number of the card, cards- gives the card that the player has in his hands and points- that increase with one everytime you get an A(15) or a 10. While the game is going messages about what card you should play and who won the current hand and how many cards ar left in the deck. Also the card class has overloads the equal operator because you need to remove cards from hand and also keep a track of them.  
+  This game is still in progress because is not fully optimal.
