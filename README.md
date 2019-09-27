@@ -1,7 +1,7 @@
 A widely used way to run Python code is through an interactive session. To start a Python interactive session, just open a command-line or terminal and then type in python and the name of the script and then hit Enter.For you to run these programs you need to have Python 3.7  on your PC and you don't need to have any extra packages installed or imported.
 
-# Popular-card-games
-In this repository you can find implementation of popular card games.
+# Popular-games
+In this repository you can find implementation of popular games.
 
   First file is cards-war:
   
