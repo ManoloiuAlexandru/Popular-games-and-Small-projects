@@ -295,25 +295,50 @@ class player():
         self.name = name
         self.list_of_used_letters = []
         self.good_letters = []
+        self.player_option = 0
 
     def printword(self, player_letter):
-        ok = 0
-        hungman.full_word = 1
-        for letter in hungman.word:
-            if player_letter == letter:
-                ok = 1
-                self.good_letters.append(player_letter)
-        for letter in hungman.word:
-            if letter in self.good_letters:
-                print(letter, end=" ")
-            else:
-                print("_", end=" ")
-                hungman.full_word = 0
+        if self.player_option == 2:
+            ok = 0
+            hungman.full_word = 1
+            for letter in hungman.word:
+                if player_letter == letter:
+                    ok = 1
+                    self.good_letters.append(player_letter)
+            for letter in hungman.word:
+                if letter in self.good_letters:
+                    print(letter, end=" ")
+                else:
+                    print("_", end=" ")
+                    hungman.full_word = 0
 
-        if hungman.full_word == 1:
-            return 0
-        if ok == 0:
-            self.life -= 1
+            if hungman.full_word == 1:
+                return 0
+            if ok == 0:
+                self.life -= 1
+
+        if self.player_option == 1:
+            ok = 0
+            hungman.full_word = 1
+            self.good_letters.append(hungman.word[0])
+            self.good_letters.append(hungman.word[-1])
+
+            hungman.full_word = 1
+            for letter in hungman.word:
+                if player_letter == letter:
+                    ok = 1
+                    self.good_letters.append(player_letter)
+            for letter in hungman.word:
+                if letter in self.good_letters:
+                    print(letter, end=" ")
+                else:
+                    print("_", end=" ")
+                    hungman.full_word = 0
+
+            if hungman.full_word == 1:
+                return 0
+            if ok == 0:
+                self.life -= 1
 
     def guess(self, letter):
         if letter in self.list_of_used_letters:
@@ -325,14 +350,34 @@ class player():
 
 
 word_to_guess = hungman()
-player1 = player(input())
-print("Hello! ", player1.name, " to start pres any letter.")
-while player1.life > 0 and hungman.full_word == 0:
-    print()
-    letter_chioce = input()
-    player1.guess(letter_chioce)
+player1 = player(input("Hello there! if you want to play enter your name: "))
+print("Hello! ", player1.name, ", you have these options now:")
+print("1: you have the first and the last letter of the word")
+print("2: you don't have the first and the last letters")
+option = int(input("Press 1 or 2 for the mode you want"))
+print()
+if option == 2:
+    player1.player_option = 2
+    print("You have picked option 2,press any letter to start")
+    while player1.life > 0 and hungman.full_word == 0:
+        print()
+        letter_chioce = input()
+        player1.guess(letter_chioce)
 
-if player1.life > 0:
-    print("You won,", player1.name)
-else:
-    print("You lose, the word was, ", hungman.word)
+    if player1.life > 0:
+        print("You won,", player1.name)
+    else:
+        print("You lose, the word was, ", hungman.word)
+
+elif option == 1:
+    player1.player_option = 1
+    print("You have picked option 1,press any letter to start")
+    while player1.life > 0 and hungman.full_word == 0:
+        print()
+        letter_chioce = input()
+        player1.guess(letter_chioce)
+
+    if player1.life > 0:
+        print("You won,", player1.name)
+    else:
+        print("You lose, the word was, ", hungman.word)
