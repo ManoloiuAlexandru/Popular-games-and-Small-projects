@@ -45,6 +45,9 @@ def win_or_lose(player, dealer):
     elif dealer.hand_value > 21 >= player.hand_value:
         print("You won")
         return 1
+    elif dealer.hand_value == player.hand_value:
+        print("Push")
+        return 2
 
 
 def show_hands(player, dealer):
@@ -66,7 +69,8 @@ for number in numbers:
 player1 = Player("Player 1", 100)
 dealer = Player("Dealer", 0)
 
-while player1.money > 0:
+play = input("Want to play ?")
+while player1.money > 0 and play == "yes":
     for i in range(0, 2):
         card_picked = random.choice(deck)
         player1.cards.append(card_picked)
@@ -87,17 +91,21 @@ while player1.money > 0:
     while money_in_game > player1.money:
         print("You don't have enough money!")
         money_in_game = int(input("How much money you want to bet?"))
-            
+
     player1.money -= money_in_game
-    while player1.hand_value <= 21 and dealer.hand_value <= 21 and choice != "stand":
+    while player1.hand_value < 21 and dealer.hand_value < 21 and choice != "stand":
         choice = input("Hit or stand?")
         if choice == "stand":
-            card_picked = random.choice(deck)
-            dealer.cards.append(card_picked)
-            deck.remove(card_picked)
             for card in dealer.cards:
                 card.hidden = False
-            dealer.calculate_hand()
+            for i in range(0, len(player1.cards) - 1):
+                card_picked = random.choice(deck)
+                dealer.cards.append(card_picked)
+                deck.remove(card_picked)
+                dealer.calculate_hand()
+                if dealer.hand_value > 21:
+                    result = 1
+                    break
             result = win_or_lose(player1, dealer)
         elif choice == "hit":
             card_picked = random.choice(deck)
@@ -115,6 +123,12 @@ while player1.money > 0:
         player1.money += money_in_game * 2
         dealer.cards.clear()
         player1.cards.clear()
+    elif result == 2:
+        player1.money += money_in_game
     else:
         dealer.cards.clear()
         player1.cards.clear()
+
+    play = input("Keep playing ?")
+    if player1.money <= 0 and play == "yes":
+        print("You are out of money !")
