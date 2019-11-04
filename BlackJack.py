@@ -84,14 +84,10 @@ while player1.money > 0:
     choice = ""
     print("Your money:", player1.money)
     money_in_game = int(input("How much money you want to bet?"))
-    while (money_in_game != 1 and money_in_game != 10 and money_in_game != 100 and money_in_game != 500) or money_in_game > player1.money:
-        if money_in_game > player1.money:
-            print("You don't have enough money!")
-            money_in_game = int(input("How much money you want to bet?"))
-        else:
-            print("You can't bet with a number different from 1,10,100,500")
-            money_in_game = int(input("How much money you want to bet?"))
-
+    while money_in_game > player1.money:
+        print("You don't have enough money!")
+        money_in_game = int(input("How much money you want to bet?"))
+            
     player1.money -= money_in_game
     while player1.hand_value <= 21 and dealer.hand_value <= 21 and choice != "stand":
         choice = input("Hit or stand?")
