@@ -98,7 +98,8 @@ while player1.money > 0 and play == "yes":
         if choice == "stand":
             for card in dealer.cards:
                 card.hidden = False
-            for i in range(0, len(player1.cards) - 1):
+            dealer.calculate_hand()
+            while dealer.hand_value < 17:
                 card_picked = random.choice(deck)
                 dealer.cards.append(card_picked)
                 deck.remove(card_picked)
