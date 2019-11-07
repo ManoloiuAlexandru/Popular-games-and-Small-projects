@@ -12,7 +12,7 @@ In this repository you can find implementation of popular games.
   
   The implementation is in Python and it is using basic Object Oriented concepts. The class card is used to define an object that have the 2 attributes of a normal card:number and card_type.
   The class player has 4 attributes: 
-      name- name of the player 
+      <b>name- name of the player</b>
       nr_card- gives the number of the card
       cards- gives the card that the player has in his hands
       war_hand- is a list that is used when war is happening.
