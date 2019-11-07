@@ -10,11 +10,12 @@ In this repository you can find implementation of popular games.
   
   Source:(https://en.wikipedia.org/wiki/War_(card_game))
   
-  The implementation is in Python and it is using basic Object Oriented concepts. The class card is used to define an object that have the 2 attributes of a normal card:number and card_type.The class player has 4 attributes: 
-  name- name of the player 
-  nr_card- gives the number of the card
-  cards- gives the card that the player has in his hands
-  war_hand- is a list that is used when war is happening.
+  The implementation is in Python and it is using basic Object Oriented concepts. The class card is used to define an object that have the 2 attributes of a normal card:number and card_type.
+  The class player has 4 attributes: 
+      name- name of the player 
+      nr_card- gives the number of the card
+      cards- gives the card that the player has in his hands
+      war_hand- is a list that is used when war is happening.
   
 The player can select if he wants to play or simulate a game. While he is playing informations of who and with what card the hand was won. In this game it does not matter who starts but who has the bigger card at the end of the hand, in this game there can't be a draw.
 
