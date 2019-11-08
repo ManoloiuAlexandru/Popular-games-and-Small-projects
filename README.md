@@ -33,6 +33,7 @@ The player can select if he wants to play or simulate a game. While he is playin
   The implementation is in Python. It is using the same OOP principles as the cards-war game. The class card is used to define an object that have the 2 attributes of a normal card: 
   - number
   - card_type
+  
   The class player has 4 attributes:
   - name=name of the player
   - nr_card= gives the number of the cards
