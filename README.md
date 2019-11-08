@@ -64,7 +64,7 @@ The player can select if he wants to play or simulate a game. While he is playin
   The games start after the player introduces his/her name and choices what type of game he/she wants: 1 if the player wants to see the first and the last letter of the word or 2 if the player dosen't want to see any of the letters, then presses a random letter on the keyboard. The game ends when the player is out of lifes or if he finds the word.  
   
  ---------------------------------------------------------------------------------------------------------------------------------------
-  BlackJack:
+  ## BlackJack:
   
   Blackjack is the American variant of a globally popular banking game known as Twenty-One. It is a comparing card game between one or more players and a dealer, where each player in turn competes against the dealer. Players do not compete against each other. It is played with one or more decks of 52 cards, and is the most widely played casino banking game in the world. The objective of the game is to beat the dealer in one of the following ways:
 
@@ -75,4 +75,16 @@ The player can select if he wants to play or simulate a game. While he is playin
   
    [Wikipedia](https://en.wikipedia.org/wiki/Blackjack)
   
-  The implementation is in Python. It is using the same OOP principles as the cards-war game. The class card is used to define an object that has the 2 attributes of a normal card: number, card_type and a special attribute: hidden-this attribute is for the dealer part, BlackJack has a rule: the dealer will have 2 cards in the start as the player but only one is shown. The class player has 4 attributes: name- name of the player, cards- gives the cards that the player has in his hands and hand_value- that increase with the number on the card, and money - this is the money that the player has at the start. The game begins with the player geting 2 cards and the dealer get 2 cards. The player will see his cards and the dealer's unhidden card. Then the player will be asked to bet a number, if he bets a number bigger then he's money he will be asked to bet less money. The game then is simple after the bet he will be asked if he wants to "stand" or if he wants to "hit". The "stand" option means that the if the dealer will have the hand_value<17 the dealer will draw cards until it gets over or equal to 17, then he's hand value will be calculated, with the player's class methos "calculate_hand", then using the function "win_or_lose", which will check who won and return 1 if the player won,2 if it is a draw or 0 if the dealer won. After we see who won the player will recive his bet * 2 back. If the player selects "hit" this will give him a new card if with the new card he goes over 21 he lost, if the hand_value <21 he will have to choice again if he wants to "hit" or "stand" the game will end when he is out of money.
+  *Implementation and Gameplay*</br>
+  The implementation is in Python. It is using the same OOP principles as the cards-war game. The class card is used to define an object that has the 2 attributes of a normal card and a specific attribute: 
+  - number
+  - card_type 
+  - hidden= this attribute is for the dealer part, BlackJack has a rule: the dealer will have 2 cards in the start as the player but only one is shown. 
+  
+  The class player has 4 attributes: 
+  - name= name of the player
+  - cards= gives the cards that the player has in his hands
+  - hand_value= that increase with the number on the card
+  - money= this is the money that the player has at the start. 
+  
+  The game begins with the player geting 2 cards and the dealer get 2 cards. The player will see his cards and the dealer's unhidden card. Then the player will be asked to bet a number, if he bets a number bigger then he's money he will be asked to bet less money. The game then is simple after the bet he will be asked if he wants to "stand" or if he wants to "hit". The "stand" option means that the if the dealer will have the hand_value<17 the dealer will draw cards until it gets over or equal to 17, then he's hand value will be calculated, with the player's class methos "calculate_hand", then using the function "win_or_lose", which will check who won and return 1 if the player won,2 if it is a draw or 0 if the dealer won. After we see who won the player will recive his bet * 2 back. If the player selects "hit" this will give him a new card if with the new card he goes over 21 he lost, if the hand_value <21 he will have to choice again if he wants to "hit" or "stand" the game will end when he is out of money.
