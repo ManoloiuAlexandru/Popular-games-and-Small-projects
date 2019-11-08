@@ -38,7 +38,7 @@ The player can select if he wants to play or simulate a game. While he is playin
   - name=name of the player
   - nr_card= gives the number of the cards
   - cards= gives the card that the player has in his hands 
-  - points= that increase with one everytime you get an A(15) or a 10. 
+  - points= that increase with one everytime you get an A(15) or a 10.</br>
   While the game is going messages about what card you should play and who won the current hand and how many cards are left in the deck. Also the card class has overloaded the equal operator because you need to remove cards from hand and also keep a track of them. 
   
    *Gameplay*</br>
