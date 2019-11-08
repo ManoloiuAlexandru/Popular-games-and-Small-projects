@@ -22,7 +22,7 @@ In this repository you can find implementation of popular games.
   *Gameplay*</br>
 The player can select if he wants to play or simulate a game. While he is playing informations of who and with what card the hand was won. In this game it does not matter who starts but who has the bigger card at the end of the hand, in this game there can't be a draw.
 
-Note: In the war game the deck is build so it can split the cards easy.
+***Note: In the war game the deck is build so it can split the cards easy.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
   Sedma:
