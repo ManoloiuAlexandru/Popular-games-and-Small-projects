@@ -46,11 +46,22 @@ The player can select if he wants to play or simulate a game. While he is playin
   The idea of the game is that player 1 starts with the card that appears most often in his hand. If the opposing player does not have a card with the same number the first player takes the cards and process repeats. Otherwise, if his opponent has the card with the same number then player 1 must give a card of the same number or let player 2 take the cards, in this way player 2 starting the next hand. When switching to the oppsoite player the variable "switched" changes it's value from 1 to 0 or from 0 to 1.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
-  Hungman:
+  ## Hungman:
   
-  Hangman is a paper and pencil guessing game for two or more players. One player thinks of a word, phrase or sentence and the other(s) tries to guess it by suggesting letters, within a certain number of guesses.[Wikipedia](https://en.wikipedia.org/wiki/Hangman_(game))
+  Hangman is a paper and pencil guessing game for two or more players. One player thinks of a word, phrase or sentence and the other(s) tries to guess it by suggesting letters, within a certain number of guesses. [Wikipedia](https://en.wikipedia.org/wiki/Hangman_(game))
 
-  The implementation is in Python. It is using the same OOP principles as the cards-war game. The class hungman is used to define the word that the player has to guess. In order to get the word that the player has to guess the program uses the Python library "random" and takes a word from the list_of_words, which is a list. The hungman class has another static variabile and that is "full_word" which is used to see if the player has found the word or not, the initial value of this variable is 0, the chances to 1 when to player finds the word. The second class is player which has 4 filds: the life, which means the number of tryes that the player has, if this value gets to 0 and the player dosen't guess the word until then the game is over. The name which is used to get the name of the player, the list_of_used_letters which is used to store all the letters that the player has tryed until now, this is used so that the player will not lose lives if he uses more then once a letter. And the good_letters that is used when a letter that the player has introduce is in the word that he is looking for. The games start after the player introduces his/her name and choices what type of game he/she wants: 1 if the player wants to see the first and the last letter of the word or 2 if the player dosen't want to see any of the letters, then presses a random letter on the keyboard. The game ends when the player is out of lifes or if he finds the word.  
+  *Implementation*</br>
+  The implementation is in Python. It is using the OOP principles. The class hungman is used to define the word that the player has to guess. In order to get the word that the player has to guess the program uses the Python library "random" and takes a word from the list_of_words, which is a list. The hungman class has another static variabile and that is "full_word" which is used to see if the player has found the word or not, the initial value of this variable is 0, the chances to 1 when to player finds the word. 
+  
+  The second class is player which has 5 filds: 
+  - the life, which means the number of tryes that the player has, if this value gets to 0 and the player dosen't guess the word until then the game is over
+  - the name, which is used to get the name of the player,
+  - the list_of_used_letters, which is used to store all the letters that the player has tryed until now, this is used so that the player will not lose lives if he uses more then once a letter. 
+  - the good_letters, that is used when a letter that the player has introduce is in the word that he is looking for. 
+  - the player_option, that is determined after a qestion and says if the player wants to know the first and the last letters or none of them.
+  
+  *Gameplay*</br>
+  The games start after the player introduces his/her name and choices what type of game he/she wants: 1 if the player wants to see the first and the last letter of the word or 2 if the player dosen't want to see any of the letters, then presses a random letter on the keyboard. The game ends when the player is out of lifes or if he finds the word.  
   
  ---------------------------------------------------------------------------------------------------------------------------------------
   BlackJack:
