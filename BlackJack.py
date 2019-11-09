@@ -126,6 +126,8 @@ while player1.money > 0 and play == "yes":
         player1.cards.clear()
     elif result == 2:
         player1.money += money_in_game
+        dealer.cards.clear()
+        player1.cards.clear()
     else:
         dealer.cards.clear()
         player1.cards.clear()
