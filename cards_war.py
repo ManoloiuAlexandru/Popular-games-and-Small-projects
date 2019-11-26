@@ -6,6 +6,9 @@ class card():
         self.number = number
         self.card_type = card_type
 
+    def display_card(self):
+        print(self.number, " ", self.card_type)
+
 
 class player():
     def __init__(self, name, nr_cards):
@@ -87,8 +90,8 @@ if "simulate" in option:
             player1.cards.extend(player1.war_hand)
             player2.nr_cards = player2.nr_cards - len(player2.war_hand)
             player1.nr_cards = player1.nr_cards + len(player1.war_hand)
-            player2.war_hand = []
-            player1.war_hand = []
+            player2.war_hand.clear()
+            player1.war_hand.clear()
         elif card_on_filed1.number < card_on_filed2.number:
             print(card_on_filed2.number, "is bigger", card_on_filed1.number)
             print("Cards taken by player: ", player2.name)
@@ -96,11 +99,11 @@ if "simulate" in option:
             player1.cards.extend(player1.war_hand)
             player2.nr_cards = player2.nr_cards + len(player2.war_hand)
             player1.nr_cards = player1.nr_cards - len(player1.war_hand)
-            player2.war_hand = []
-            player1.war_hand = []
+            player2.war_hand.clear()
+            player1.war_hand.clear()
         else:
             print("War")
-            if card_on_filed2.number > len(player1.cards) and len(player1.cards) > 1:
+            if card_on_filed2.number > len(player1.cards) > 1:
                 for i in range(0, len(player1.cards) - 1):
                     card_on_filed1 = random.choice(player1.cards)
                     card_on_filed2 = random.choice(player2.cards)
@@ -108,7 +111,7 @@ if "simulate" in option:
                     player1.cards.remove(card_on_filed1)
                     player2.war_hand.append(card_on_filed2)
                     player2.cards.remove(card_on_filed2)
-            elif card_on_filed2.number > len(player2.cards) and len(player2.cards) > 1:
+            elif card_on_filed2.number > len(player2.cards) > 1:
                 for i in range(0, len(player2.cards) - 1):
                     card_on_filed1 = random.choice(player1.cards)
                     card_on_filed2 = random.choice(player2.cards)
@@ -125,7 +128,7 @@ if "simulate" in option:
                     player2.war_hand.append(card_on_filed2)
                     player2.cards.remove(card_on_filed2)
             else:
-                if len(player1.cards) == 1:
+                if len(player2.cards) == 1:
                     card_on_filed2 = random.choice(player2.cards)
                     player2.war_hand.append(card_on_filed2)
                     player2.cards.remove(card_on_filed2)
@@ -168,8 +171,8 @@ elif "play" in option:
             player1.cards.extend(player1.war_hand)
             player2.nr_cards = player2.nr_cards - len(player2.war_hand)
             player1.nr_cards = player1.nr_cards + len(player1.war_hand)
-            player2.war_hand = []
-            player1.war_hand = []
+            player2.war_hand.clear()
+            player1.war_hand.clear()
         elif card_on_filed1.number < card_on_filed2.number:
             print(card_on_filed2.number, "is bigger", card_on_filed1.number)
             print("Cards taken by player: ", player2.name)
@@ -177,11 +180,11 @@ elif "play" in option:
             player1.cards.extend(player1.war_hand)
             player2.nr_cards = player2.nr_cards + len(player2.war_hand)
             player1.nr_cards = player1.nr_cards - len(player1.war_hand)
-            player2.war_hand = []
-            player1.war_hand = []
+            player2.war_hand.clear()
+            player1.war_hand.clear()
         else:
             print("War")
-            if card_on_filed2.number > len(player1.cards) and len(player1.cards) > 1:
+            if card_on_filed2.number > len(player1.cards) > 1:
                 for i in range(0, len(player1.cards) - 1):
                     card_on_filed1 = random.choice(player1.cards)
                     card_on_filed2 = random.choice(player2.cards)
@@ -189,7 +192,7 @@ elif "play" in option:
                     player1.cards.remove(card_on_filed1)
                     player2.war_hand.append(card_on_filed2)
                     player2.cards.remove(card_on_filed2)
-            elif card_on_filed2.number > len(player2.cards) and len(player2.cards) > 1:
+            elif card_on_filed2.number > len(player2.cards) > 1:
                 for i in range(0, len(player2.cards) - 1):
                     card_on_filed1 = random.choice(player1.cards)
                     card_on_filed2 = random.choice(player2.cards)
@@ -206,7 +209,7 @@ elif "play" in option:
                     player2.war_hand.append(card_on_filed2)
                     player2.cards.remove(card_on_filed2)
             else:
-                if len(player1.cards) == 1:
+                if len(player2.cards) == 1:
                     card_on_filed2 = random.choice(player2.cards)
                     player2.war_hand.append(card_on_filed2)
                     player2.cards.remove(card_on_filed2)
