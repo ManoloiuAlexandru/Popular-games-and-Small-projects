@@ -105,5 +105,5 @@ The player can select if he wants to play or simulate a game. While he is playin
   *How it Works*</br>
   The methods add_to_left and add_to_right are use to add data to the left and to the right of node, that is passed as argument. The method get_person_that_talked traverse the tree on the right to check to who the node had talked to and returns a list that contains these nodes. The get_person_to_talk_to makes the same thing as the last method but this time is traversing the tree on the left side. The method talk calls the last 2 methods then pickes a random person from the left side and put it on the right side, this means that  the person has talked to that person so it won't be picked again. At the end the method return the new formed tree. 
   
-  ***Note: the script is trying to follow the [Single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle)
+  ***Note: the script is trying to follow the [Single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle)***
     
