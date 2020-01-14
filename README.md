@@ -90,3 +90,20 @@ The player can select if he wants to play or simulate a game. While he is playin
   *Gameplay*</br>
   The game begins with the player geting 2 cards and the dealer get 2 cards. The player will see his cards and the dealer's unhidden card. Then the player will be asked to bet a number, if he bets a number bigger then he's money he will be asked to bet less money. 
   The game then is simple after the bet he will be asked if he wants to "stand" or if he wants to "hit". The "stand" option means that the if the dealer will have the hand_value<17 the dealer will draw cards until it gets over or equal to 17, then he's hand value will be calculated, with the player's class methos "calculate_hand", then using the function "win_or_lose", which will check who won and return 1 if the player won, 2 if it is a draw or 0 if the dealer won. After we see who won the player will recive his bet * 2 back. If the player selects "hit" this will give him a new card if with the new card he goes over 21 he lost, if the hand_value <21 he will have to choice again if he wants to "hit" or "stand" the game will end when he is out of money.
+  
+ ---------------------------------------------------------------------------------------------------------------------------------------
+## Binary Tree Friends:
+  
+  In computer science, a binary tree is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child. A recursive definition using just set theory notions is that a (non-empty) binary tree is a tuple (L, S, R), where L and R are binary trees or the empty set and S is a singleton set. Some authors allow the binary tree to be the empty set as well. [Wikipedia](https://en.wikipedia.org/wiki/Binary_tree)
+  
+  *Implementation*</br>
+  The implementation is in Python and it is using Object Oriented concepts. The class BinaryTree is used to define an object that have the 3 attributes of a node in a Binary Tree:
+    - right=node to the right
+    - left=node to the left
+    - data=data from the node
+    
+  *How it Works*</br>
+  The methods add_to_left and add_to_right are use to add data to the left and to the right of node, that is passed as argument. The method get_person_that_talked traverse the tree on the right to check to who the node had talked to and returns a list that contains these nodes. The get_person_to_talk_to makes the same thing as the last method but this time is traversing the tree on the left side. The method talk calls the last 2 methods then pickes a random person from the left side and put it on the right side, this means that  the person has talked to that person so it won't be picked again. At the end the method return the new formed tree. 
+  
+  ***Note: the script is trying to follow the [Single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle)
+    
