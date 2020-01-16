@@ -107,3 +107,19 @@ The player can select if he wants to play or simulate a game. While he is playin
   
   ***Note: the script is trying to follow the [Single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle)***
     
+----------------------------------------------------------------------------------------------------------------------------------------
+  ## Xml_compare_field:
+  
+    Extensible Markup Language (XML) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. The World Wide Web Consortium's XML 1.0 Specification of 1998 and several other related specifications—all of them free open standards—define XML. [Wikipedia](https://en.wikipedia.org/wiki/XML)
+    
+    *Implementation*</br>
+    The implementation is in Python and it is using Object Oriented concepts. The class CompareFile is used to define an object that has the 2 attributes:
+    - file_for_compare=the file from where the data is taken for comparing
+    - file_to_compare=the file to compare the data
+
+    *How it Works*</br>
+    The method create_dict_file_for_compare creates a dictionary, a python data structure, that contains all the data that we want to compare. The method create_dict_file_to_compare dose the same thing but for the other file. The method get_dict_of_specific_item_from_dict_file_for_compare tkae the specific field from the XML. The method compare_specific_field create a dictionary for the fields that we want to compare that has as keys the parameter "key_for_compare". Finaly the method find_and_compare_element takes as parameters:
+     - item= the item that we want to compare
+     - dict_of_elements= the dictionary that we use to compare the data
+     - key_for_compare= the key that we use to check
+   WIP
