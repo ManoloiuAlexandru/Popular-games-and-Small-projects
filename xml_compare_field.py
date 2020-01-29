@@ -63,7 +63,8 @@ class CompareFile:
                             if item[attrib] == element[attrib]:
                                 pass
                             else:
-                                if ';' in item[attrib]:
+                                if ';' in item[attrib]: #here you can modify the seprator and put what you need for compare 
+                                    #the example here is like if you have a [a;b;c] and you want to check if it is like [b;c;a]
                                     list_of_elements1=item[attrib].split(';')
                                     list_of_elements2=element[attrib].split(';')
                                     for elem_in_list1 in list_of_elements1:
