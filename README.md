@@ -46,7 +46,7 @@ The player can select if he wants to play or simulate a game. While he is playin
   The idea of the game is that player 1 starts with the card that appears most often in his hand. If the opposing player does not have a card with the same number the first player takes the cards and process repeats. Otherwise, if his opponent has the card with the same number then player 1 must give a card of the same number or let player 2 take the cards, in this way player 2 starting the next hand. When switching to the oppsoite player the variable "switched" changes it's value from 1 to 0 or from 0 to 1.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
-  ## Hungman:
+  ## Hangman:
   
   Hangman is a paper and pencil guessing game for two or more players. One player thinks of a word, phrase or sentence and the other(s) tries to guess it by suggesting letters, within a certain number of guesses. [Wikipedia](https://en.wikipedia.org/wiki/Hangman_(game))
 
