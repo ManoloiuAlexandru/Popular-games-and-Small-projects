@@ -104,6 +104,6 @@ class CompareFile:
 
 
 if __name__ == '__main__':
-    util_compare = CompareFile('your_file_path/file_name.xml')
+    util_compare = CompareFile('your_file_path/file_name_to_compare.xml','your_file_path/file_name_for_compare.xml')
     rez = util_compare.compare_specific_field(
-        ['list_of_elemnts'], 'element_field', '@key_to_element_field') # this line will output the differences of the respectiv fields the key needs to have @
+        ['root','child1', 'child2'],'child3','@unique_compare_key' ) # this line will output the differences of the respectiv fields the key needs to have @
