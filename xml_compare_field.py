@@ -63,9 +63,19 @@ class CompareFile:
                             if item[attrib] == element[attrib]:
                                 pass
                             else:
-                                print("These difference are in the", self.file_for_compare)
-                                print("The attribute ", attrib, "of ", element[key_for_compare], " has other value",
-                                      item[attrib])
+                                if ';' in item[attrib]:
+                                    list_of_elements1=item[attrib].split(';')
+                                    list_of_elements2=element[attrib].split(';')
+                                    for elem_in_list1 in list_of_elements1:
+                                        if elem_in_list1 not in list_of_elements2:
+                                            print("These difference are in the", self.file_for_compare)
+                                            print("The attribute ", attrib, "of ", element[key_for_compare], " has other value",
+                                                  item[attrib])
+                                            break
+                                else:
+                                    print("These difference are in the", self.file_for_compare)
+                                    print("The attribute ", attrib, "of ", element[key_for_compare], " has other value",
+                                          item[attrib])
                         else:
                             print("These difference are in the", self.file_for_compare)
                             print("The attrib", attrib, "of ", element[key_for_compare], " is not in the file")
@@ -75,12 +85,25 @@ class CompareFile:
                             if item[attrib] == element[attrib]:
                                 pass
                             else:
-                                print("These difference are in the", self.file_to_compare)
-                                print("The attribute ", attrib, "of ", element[key_for_compare], " has other value",
-                                      item[attrib])
+                                if ';' in item[attrib]:
+                                    list_of_elements1 = item[attrib].split(';')
+                                    list_of_elements2 = element[attrib].split(';')
+                                    for elem_in_list1 in list_of_elements1:
+                                        if elem_in_list1 not in list_of_elements2:
+                                            print("These difference are in the", self.file_for_compare)
+                                            print("The attribute ", attrib, "of ", element[key_for_compare],
+                                                  " has other value",
+                                                  item[attrib])
+                                            break
                         else:
                             print("These difference are in the", self.file_to_compare)
                             print("The attrib is not in the file")
 
         if in_the_list == 0:
             print(item[key_for_compare], " not in")
+
+
+if __name__ == '__main__':
+    util_compare = CompareFile('your_file_path/file_name.xml')
+    rez = util_compare.compare_specific_field(
+        ['list_of_elemnts'], 'element_field', '@key_to_element_field') # this line will output the differences of the respectiv fields the key needs to have @
