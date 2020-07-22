@@ -1,7 +1,10 @@
 import random
 
 
+# Declaration of class hungman
 class hungman:
+    # list_of_words is the list that contains the words from which we are going to choice the word that we want our
+    # player to guess
     list_of_words = ["aback", "abaft", "abandoned", "abashed", "aberrant", "abhorrent", "abiding", "abject", "ablaze",
                      "able", "abnormal", "aboard", "aboriginal", "abortive", "abounding", "abrasive", "abrupt",
                      "absent", "absorbed", "absorbing", "abstracted", "absurd", "abundant", "abusive", "acceptable",
@@ -285,32 +288,49 @@ class hungman:
                      "whip", "whirl", "whisper", "whistle", "wink", "wipe", "wish", "wobble", "wonder", "work", "worry",
                      "wrap", "wreck", "wrestle", "wriggle", "yawn", "yell", "zip", "zoom"]
 
+    # random choice a word form the list of words
     word = random.choice(list_of_words)
-    full_word = 0
+    full_word = 0  # variable that will turn to 1 when the word is found
 
 
+# declaration of class player
 class player():
     def __init__(self, name):
+        """
+        class constructor
+        """
         self.life = 8
         self.name = name
         self.list_of_used_letters = []
         self.good_letters = []
         self.player_option = 0
 
-    def printword(self, player_letter):
+    def print_word_letters(self, player_letter):
+        """
+        method that prints the word so far
+        player_letter is the letter that the player selects
+        return 1 if the letter was in the word otherwise 0
+        """
+        hungman.full_word = 1
+        ok = 0
+        for letter in hungman.word:
+            if player_letter == letter:
+                ok = 1
+                self.good_letters.append(player_letter)
+        for letter in hungman.word:
+            if letter in self.good_letters:
+                print(letter, end=" ")
+            else:
+                print("_", end=" ")
+                hungman.full_word = 0
+        return ok
+
+    def life_check(self, player_letter):
+        """
+        method that check if the player letter was in the word and if it was not life-1 
+        """
         if self.player_option == 2:
-            ok = 0
-            hungman.full_word = 1
-            for letter in hungman.word:
-                if player_letter == letter:
-                    ok = 1
-                    self.good_letters.append(player_letter)
-            for letter in hungman.word:
-                if letter in self.good_letters:
-                    print(letter, end=" ")
-                else:
-                    print("_", end=" ")
-                    hungman.full_word = 0
+            ok = self.print_word_letters(player_letter)
 
             if hungman.full_word == 1:
                 return 0
@@ -318,22 +338,11 @@ class player():
                 self.life -= 1
 
         if self.player_option == 1:
-            ok = 0
-            hungman.full_word = 1
+
             self.good_letters.append(hungman.word[0])
             self.good_letters.append(hungman.word[-1])
 
-            hungman.full_word = 1
-            for letter in hungman.word:
-                if player_letter == letter:
-                    ok = 1
-                    self.good_letters.append(player_letter)
-            for letter in hungman.word:
-                if letter in self.good_letters:
-                    print(letter, end=" ")
-                else:
-                    print("_", end=" ")
-                    hungman.full_word = 0
+            ok = self.print_word_letters(player_letter)
 
             if hungman.full_word == 1:
                 return 0
@@ -345,39 +354,40 @@ class player():
             print("Letter already used")
             return 0
         else:
-            self.printword(letter)
+            self.life_check(letter)
             self.list_of_used_letters.append(letter)
 
 
-word_to_guess = hungman()
-player1 = player(input("Hello there! if you want to play enter your name: "))
-print("Hello! ", player1.name, ", you have these options now:")
-print("1: you have the first and the last letter of the word")
-print("2: you don't have the first and the last letters")
-option = int(input("Press 1 or 2 for the mode you want"))
-print()
-if option == 2:
-    player1.player_option = 2
-    print("You have picked option 2,press any letter to start")
-    while player1.life > 0 and hungman.full_word == 0:
-        print()
-        letter_chioce = input()
-        player1.guess(letter_chioce)
+if __name__ == '__main__':
+    word_to_guess = hungman()
+    player1 = player(input("Hello there! if you want to play enter your name: "))
+    print("Hello! ", player1.name, ", you have these options now:")
+    print("1: you have the first and the last letter of the word")
+    print("2: you don't have the first and the last letters")
+    option = int(input("Press 1 or 2 for the mode you want"))
+    print()
+    if option == 2:
+        player1.player_option = 2
+        print("You have picked option 2,press any letter to start")
+        while player1.life > 0 and hungman.full_word == 0:
+            print()
+            letter_chioce = input()
+            player1.guess(letter_chioce)
 
-    if player1.life > 0:
-        print("You won,", player1.name)
-    else:
-        print("You lose, the word was, ", hungman.word)
+        if player1.life > 0:
+            print("You won,", player1.name)
+        else:
+            print("You lose, the word was, ", hungman.word)
 
-elif option == 1:
-    player1.player_option = 1
-    print("You have picked option 1,press any letter to start")
-    while player1.life > 0 and hungman.full_word == 0:
-        print()
-        letter_chioce = input()
-        player1.guess(letter_chioce)
+    elif option == 1:
+        player1.player_option = 1
+        print("You have picked option 1,press any letter to start")
+        while player1.life > 0 and hungman.full_word == 0:
+            print()
+            letter_chioce = input()
+            player1.guess(letter_chioce)
 
-    if player1.life > 0:
-        print("You won,", player1.name)
-    else:
-        print("You lose, the word was, ", hungman.word)
+        if player1.life > 0:
+            print("You won,", player1.name)
+        else:
+            print("You lose, the word was, ", hungman.word)
