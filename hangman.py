@@ -327,7 +327,7 @@ class player():
 
     def life_check(self, player_letter):
         """
-        method that check if the player letter was in the word and if it was not life-1 
+        method that check if the player letter was in the word and if it was not life-1
         """
         if self.player_option == 2:
             ok = self.print_word_letters(player_letter)
@@ -350,12 +350,31 @@ class player():
                 self.life -= 1
 
     def guess(self, letter):
+        """
+        method that returns 0 if the letter the player has give was already use
+        or calls life_check method and then appends the letter to the list_of_used_letters
+        """
         if letter in self.list_of_used_letters:
             print("Letter already used")
             return 0
         else:
             self.life_check(letter)
             self.list_of_used_letters.append(letter)
+
+
+def gameplay():
+    """
+    function that lets the user introduce letters until he guess the word or until he has 0 life
+    """
+    while player1.life > 0 and hungman.full_word == 0:
+        print()
+        letter_chioce = input()
+        player1.guess(letter_chioce)
+
+    if player1.life > 0:
+        print("You won,", player1.name)
+    else:
+        print("You lose, the word was, ", hungman.word)
 
 
 if __name__ == '__main__':
@@ -369,25 +388,9 @@ if __name__ == '__main__':
     if option == 2:
         player1.player_option = 2
         print("You have picked option 2,press any letter to start")
-        while player1.life > 0 and hungman.full_word == 0:
-            print()
-            letter_chioce = input()
-            player1.guess(letter_chioce)
-
-        if player1.life > 0:
-            print("You won,", player1.name)
-        else:
-            print("You lose, the word was, ", hungman.word)
+        gameplay()
 
     elif option == 1:
         player1.player_option = 1
         print("You have picked option 1,press any letter to start")
-        while player1.life > 0 and hungman.full_word == 0:
-            print()
-            letter_chioce = input()
-            player1.guess(letter_chioce)
-
-        if player1.life > 0:
-            print("You won,", player1.name)
-        else:
-            print("You lose, the word was, ", hungman.word)
+        gameplay()
