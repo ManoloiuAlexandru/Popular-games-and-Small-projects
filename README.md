@@ -62,8 +62,8 @@ The player can select if he wants to play or simulate a game. While he is playin
   
   *Gameplay*</br>
   The games start after the player introduces his/her name and choices what type of game he/she wants: 1 if the player wants to see the first and the last letter of the word or 2 if the player dosen't want to see any of the letters, then presses a random letter on the keyboard. The game ends when the player is out of lifes or if he finds the word. 
-    
-    ***Note:***
+  
+  ***Note: The C++ file is similar to the Python one in the variables,functions and methods.***
     
  ---------------------------------------------------------------------------------------------------------------------------------------
   ## BlackJack:
