@@ -78,7 +78,7 @@ The player can select if he wants to play or simulate a game. While he is playin
    [Wikipedia](https://en.wikipedia.org/wiki/Blackjack)
   
   *Implementation*</br>
-  The implementation is in Python. It is using the same OOP principles as the cards-war game. The class card is used to define an object that has the 2 attributes of a normal card and a specific attribute: 
+  The implementations are in Python and C++. It is using the same OOP principles as the cards-war game. The class card is used to define an object that has the 2 attributes of a normal card and a specific attribute: 
   - number
   - card_type 
   - hidden= this attribute is for the dealer part, BlackJack has a rule: the dealer will have 2 cards in the start as the player but only one is shown. 
@@ -88,6 +88,8 @@ The player can select if he wants to play or simulate a game. While he is playin
   - cards= gives the cards that the player has in his hands
   - hand_value= that increase with the number on the card
   - money= this is the money that the player has at the start. 
+  
+  ***Note: The C++ file is similar to the Python one in variables,functions and methods. C++ card class as == operator overloaded.***
   
   *Gameplay*</br>
   The game begins with the player geting 2 cards and the dealer get 2 cards. The player will see his cards and the dealer's unhidden card. Then the player will be asked to bet a number, if he bets a number bigger then he's money he will be asked to bet less money. 
