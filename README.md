@@ -131,3 +131,29 @@ The player can select if he wants to play or simulate a game. While he is playin
   ***Note:
     The work above is if you want to compare 2 XML files at work/school or just you need to compare the files. 
     The script is trying to follow the [Single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle)***
+    
+----------------------------------------------------------------------------------------------------------------------------------------
+  ## Password Generator:
+  
+  A password, sometimes called a passcode, is a memorized secret, typically a string of characters, usually used to confirm the identity of a user. Using the terminology of the NIST Digital Identity Guidelines, the secret is memorized by a party called the claimant while the party verifying the identity of the claimant is called the verifier. When the claimant successfully demonstrates knowledge of the password to the verifier through an established authentication protocol, the verifier is able to infer the claimant's identity.
+
+  In general, a password is an arbitrary string of characters including letters, digits, or other symbols. If the permissible characters are constrained to be numeric, the corresponding secret is sometimes called a personal identification number (PIN).
+
+  Despite its name, a password does not need to be an actual word; indeed, a non-word (in the dictionary sense) may be harder to guess, which is a desirable property of passwords. A memorized secret consisting of a sequence of words or other text separated by spaces is sometimes called a passphrase. A passphrase is similar to a password in usage, but the former is generally longer for added security.[Wikipedia](https://en.wikipedia.org/wiki/Password)
+
+  *Implementation*</br>
+    The implementation is in Python and it is using Object Oriented concepts. The class Password is used to define an object that has the 8 attributes:
+    - length = the length of the password
+    - nr_special_char = number of special char
+    - nr_upper_letters = number of upper letters
+    - nr_lower_letters = number of lower letters
+    - nr_digits = number of digits
+    - password = the password that will be generated
+    - what_to_add = a list of what action to use 
+    - length_from_user = the length from all the fileds that the user have given
+    
+   *How it Works*</br>
+     The method checking_params will check if the length of the password is < than the length of the user. If that happeens than the program will stop and return 0 saying:""The number of letters,digits and special char is bigger than the length of the password", otherwise if the length from the user is < than the password length then it will add self.length - self.length_from_user number of charachters. The method add_upper_letters will add a random uppercase letter to the password using the buildin function choice from the random module. The uppercase letter will be from the ascii_uppercase list from the string module. The rest of the add methods work in the same way. The what_action_to_take method will call the add funtions, based on what parameter it gets, the parameter is send random from the method create_password.
+           
+   ***Note: the script is trying to follow the [Single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle)***
+  
