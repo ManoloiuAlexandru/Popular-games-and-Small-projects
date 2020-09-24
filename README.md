@@ -101,7 +101,7 @@ In this repository you can find implementation of popular games and small projec
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In computer science, a binary tree is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child. A recursive definition using just set theory notions is that a (non-empty) binary tree is a tuple (L, S, R), where L and R are binary trees or the empty set and S is a singleton set. Some authors allow the binary tree to be the empty set as well. [Wikipedia](https://en.wikipedia.org/wiki/Binary_tree)
   
   *Implementation*</br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The implementation is in Python and it is using Object Oriented concepts. The class BinaryTree is used to define an object that has the 3 attributes of a node in a Binary Tree:
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The implementation is in Python and it is using Object Oriented concepts. The class BinaryTree is used to define an object that has the 3 attributes of a node in a Binary Tree:</br>
     - right= node to the right 
     - left= node to the left 
     - data= data from the node 
