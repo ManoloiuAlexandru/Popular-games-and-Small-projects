@@ -156,4 +156,25 @@ In this repository you can find implementation of popular games and small projec
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The method checking_params will check if the length of the password is < than the length of the user. If that happeens than the program will stop and return 0 saying:""The number of letters,digits and special char is bigger than the length of the password", otherwise if the length from the user is < than the password length then it will add self.length - self.length_from_user number of charachters. The method add_upper_letters will add a random uppercase letter to the password using the buildin function choice from the random module. The uppercase letter will be from the ascii_uppercase list from the string module. The rest of the add methods work in the same way. The what_action_to_take method will call the add funtions, based on what parameter it gets, the parameter is send random from the method create_password.
            
    ***Note: the script is trying to follow the [Single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle)***
+   
+----------------------------------------------------------------------------------------------------------------------------------------
+
+## Shopping Item organizer
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In computer science, a binary search tree (BST), also called an ordered or sorted binary tree, is a rooted binary tree whose internal nodes each store a key greater than all the keys in the node's left subtree and less than those in its right subtree. A binary tree is a type of data structure for storing data such as numbers in an organized way. Binary search trees allow binary search for fast lookup, addition and removal of data items, and can be used to implement dynamic sets and lookup tables. The order of nodes in a BST means that each comparison skips about half of the remaining tree, so the whole lookup takes time proportional to the binary logarithm of the number of items stored in the tree. This is much better than the linear time required to find items by key in an (unsorted) array, but slower than the corresponding operations on hash tables. Several variants of the binary search tree have been studied. [Wikipedia](https://en.wikipedia.org/wiki/Binary_search_tree)
+
+  *Implementation*</br>
+     
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The implementation is in C++ and it is using Object Oriented concepts. The class Item is used to define an object that has the 2 attributes:
+    - item_name = name of the item
+    - price = price of the item
+    
+   The class BST is used to define an object that has the 3 attributes of a node in a Binary Search Tree:
+    - right=node to the right
+    - left=node to the left
+    - data=data from the node
+    
+   *How it Works*</br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WIP for documenation.
+
   
