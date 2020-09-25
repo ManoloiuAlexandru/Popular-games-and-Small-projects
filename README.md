@@ -175,6 +175,8 @@ In this repository you can find implementation of popular games and small projec
     - data=data from the node
     
    *How it Works*</br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WIP for documenation.
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The function argument_parser will parse the arguments send to the program and return an array of int that contains the position of the output and input files locations. If one the the parameters is missing than the function will return NULL and the program will stop. Next will check if the input files exists and that we can read from it, after that we read line by line and introduce the data in the BST using the method Insert. The BST class has 2 constructors, one with parameters and the other with no parameters. The method Insert introduces data in the BST by comparing the data in the root and then going left, if it is <, or right if it >. After that the user is asked to introduce a price, and the program will search in the tree in Preorder to find the first item that has the price <= than the price the user send. When it finds the value the user is looking for, the program will print the node from the tree, the BST class has the operator << overloaded, so it can print it on the screen.
+  
+  ***Note: the script is trying to follow the [Single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle)***
 
   
